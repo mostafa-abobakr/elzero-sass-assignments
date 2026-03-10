@@ -1,0 +1,158 @@
+//SASS Assignments Lessons from 1 to 6
+
+//Assignment #1
+.content {
+    > .box {
+        padding: 15px;
+        > .title {
+            font-size: 18px;
+        }
+    }
+    .cat {
+        padding: 15px;
+    }
+    &.premium {
+        &:before {
+            content: "Premium Box";
+        }
+        &:hover {
+            background-color: #eee;
+        }
+    }
+}
+
+//Assignment #2
+.class {
+    > .child {
+        padding: 10px;
+    }
+}
+
+//Assignment #3
+$main-weight: bold;
+$main-size: 20px;
+
+.class {
+    font-weight: $main-weight;
+    font-size: $main-size;
+}
+
+//Assignment #4
+.parent {
+    & + .sibling {
+        margin: auto {
+            top: 10px;
+        }
+        & ~ .last {
+            padding: 10px;
+        }
+    }
+}
+//output
+// .parent + .sibling {
+//     margin: auto;
+//     margin-top: 10px;
+// }
+
+// .parent + .sibling ~ .last {
+//     padding: 10px;
+// }
+
+//Assignment #5
+.widget {
+    background-color: white;
+    padding: 20px;
+}
+.main-border {
+    border: 1px solid #ccc;
+}
+.my-class {
+    @extend .widget;
+    @extend .main-border;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+//Assignment #6
+%widget {
+    background-color: white;
+    padding: 20px;
+}
+%main-border {
+    border: 1px solid #ccc;
+}
+.my-class {
+    @extend %widget;
+    @extend %main-border;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+//Assignment #7
+
+.box {
+    h2,
+    p {
+        font-size: 20px;
+    }
+}
+
+$mobile-width: "max-width:575px";
+
+@media ($mobile-width) {
+    .box {
+        h2,
+        p {
+            font-size: 16px;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+//Assignment #8
+// Do Not Edit Here
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+$link-color: $green;
+$link-hover: $red;
+
+// Do Not Edit Here
+.box a {
+    color: $link-color;
+    &:hover {
+        color: $link-hover;
+    }
+}
+
+//Assignment #9
+// - Project_Folder
+// --- Helpers
+// ------ _vars.scss
+// ------ _functions.scss
+/*
+@use '/Helpers/vars';
+@use '/Helpers/functions';
+*/
+// - Project_Folder
+// --- Layout
+// ------ _header.scss
+/*
+@use '/Layout/header';
+@use '/Layout/footer';
+*/
+
+//Assignment #10
+
+.box {
+    font-size: 20px;
+    &-holder {
+        width: 1000px;
+        &-content {
+            margin: auto;
+        }
+    }
+}

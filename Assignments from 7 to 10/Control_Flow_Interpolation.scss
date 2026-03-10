@@ -1,0 +1,78 @@
+//SASS Assignments Lessons from 7 to 10
+
+//Assignment #1
+$main: "school";
+$child: "box";
+$language: "ar"; // English
+$gap: 20px;
+
+.#{$main} {
+    padding: $gap;
+    @if $language== "en" {
+        direction: ltr;
+        margin-left: $gap;
+    } @else {
+        direction: rtl;
+        margin-right: $gap;
+    }
+
+    & &-#{$child} {
+        padding: calc($gap/2);
+    }
+    &:hover &-#{$child} {
+        background-color: #eee;
+    }
+}
+
+//Assignment #2
+
+$main-color: red;
+$alt-color: blue;
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: #{$main-color} */
+/* Website Theme Alternate Color Is: #{$alt-color} */
+
+//Assignment #3
+$number: 10;
+// $number: 8;
+// $number: 5;
+
+.class {
+    // Larger Than 8
+    @if $number>8 {
+        color: blue;
+    }
+    // Larger Than 5
+    @else if $number>5 {
+        color: green;
+    }
+    // Anything Else
+    @else {
+        color: red;
+    }
+}
+
+//Assignment #4
+$number: 10;
+$color: red;
+$theme: light;
+
+.class {
+    @if($number > 5 and $color== red and not ($theme == dark)) {
+        color: red;
+    }
+}
+
+//Assignment #5
+// SASS Code
+$number: 10;
+
+// Output
+.box {
+  @if $number>8{
+    background-color: #EEE;
+    @if $number>9 {
+        text-align: center;
+    }
+  }
+}

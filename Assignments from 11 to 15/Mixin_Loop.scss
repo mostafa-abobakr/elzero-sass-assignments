@@ -1,0 +1,133 @@
+//SASS Assignments Lessons from 11 to 15
+
+//Assignment #1
+@mixin arrow($dir) {
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+
+  @if($dir=="top") {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40px;
+    border-bottom-color: red;
+  }
+
+  @else if($dir=="bottom") {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    border-top-color: red;
+  }
+
+  @else if($dir=="left") {
+    top: 50%;
+    transform: translatey(-50%);
+    left: -40px;
+    border-right-color: red;
+  }
+
+  @else if($dir=="right") {
+    top: 50%;
+    transform: translatey(-50%);
+    right: -40px;
+    border-left-color: red;
+  }
+}
+
+.element {
+  &:before {
+    @include arrow("top");
+  }
+}
+
+//Assignment #2
+/*using for loop*/
+@for $i from 1 through 16 {
+  .col-#{$i} {
+    width: percentage($i / 16);
+  }
+}
+
+/*using while loop*/
+// $i:1;
+// @while $i < 17{
+//   .col-#{$i} {
+//     width: percentage($i / 16);
+//   }
+//   $i: $i+1
+// }
+
+//Assignment #3
+$names: "books" 20px red 18,
+  "games" 30px green 18,
+  "dvds" 20px blue;
+
+@each $name , $padding, $color, $size in $names {
+
+  @if($size==null) {
+    $size: 16
+  }
+
+  .#{$name} {
+    padding: $padding;
+    font-size: #{$size}px;
+    border-bottom: 2px solid $color;
+    color: #444;
+  }
+}
+
+//Assignment #4
+$init: 1;
+
+@while $init <6 {
+  .circle-#{100 * $init} {
+    width: 100px * $init;
+    height: 100px* $init;
+    border-radius: 50px * $init;
+  }
+
+  $init :$init +1;
+}
+
+//Assignment #5
+@for  $init from 1 through 5 {
+  .circle-#{100 * $init} {
+    width: 100px * $init;
+    height: 100px* $init;
+    border-radius: 50px * $init;
+  }
+}
+
+//Assignment #6
+@mixin placeholder {
+  $prefixes: ".", ":-moz-", "::-moz-", ":-ms-input-", "::-webkit-input-";
+
+  @each $prefix in $prefixes {
+    &#{$prefix+"placeholder"} {
+      @content
+    }
+  }
+}
+
+textarea {
+  @include placeholder {
+    color: #777;
+  }
+}
+
+//Assignment #7
+@mixin flex-center($width: 400px){
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $width;
+}
+
+.box-one {
+  @include flex-center(400px);
+}
+
+.box-two {
+  @include flex-center;
+}

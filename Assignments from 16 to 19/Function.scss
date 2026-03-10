@@ -1,0 +1,31 @@
+//SASS Assignments Lessons from 16 to 19
+
+//Assignment #1
+$num: 2;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@for $i from 1 through 5 {
+  .box-#{$start}{
+    width: $start+px;
+    height: double($start)+px;
+  }
+    $start:double($start);
+}
+
+//Assignment #2
+@function get-total($nums...){
+  $total:0;
+  @each $num in $nums{
+    $total:$total+$num;
+  }
+  @return $total;
+}
+
+.box {
+  top: get-total(100, 50, 20);
+  right: get-total(100, 50);
+}
